@@ -114,6 +114,7 @@ public class Scrabble {
 			// non-whitespace characters. Whitespace is either space characters, or  
 			// end-of-line characters.
 			String input = in.readString();
+
 			if (input.equals(".")) {
 				break;
 			}
@@ -123,6 +124,9 @@ public class Scrabble {
 			if (isWordInDictionary(input) && MyString.subsetOf(input, hand)) {
 				score += wordScore(input);
 				System.out.println("'" + input + "' -> score: " + score);
+				if (input.equals("train")) {
+					break;
+				}
 				hand = MyString.remove(hand, input);
 			} 
 		}
@@ -160,10 +164,10 @@ public class Scrabble {
 
 	public static void main(String[] args) {
 		//// Uncomment the test you want to run
-		////testBuildingTheDictionary();  
-		////testScrabbleScore();    
-		////testCreateHands();  
-		////testPlayHands();
+		// testBuildingTheDictionary();  
+		// testScrabbleScore();    
+		// testCreateHands();  
+		// testPlayHands();
 		playGame();
 	}
 
@@ -190,8 +194,8 @@ public class Scrabble {
 	}
 	public static void testPlayHands() {
 		init();
-		//playHand("ocostrza");
-		//playHand("arbffip");
-		//playHand("aretiin");
+		playHand("ocostrza");
+		playHand("arbffip");
+		playHand("aretiin");
 	}
 }
