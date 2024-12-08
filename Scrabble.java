@@ -114,18 +114,19 @@ public class Scrabble {
 			// non-whitespace characters. Whitespace is either space characters, or  
 			// end-of-line characters.
 			String input = in.readString();
-
 			if (input.equals(".")) {
 				break;
 			}
 
 			input = input.toLowerCase(); // normalizing input to lowercase letters
 
-			if (isWordInDictionary(input)) {
+			if (isWordInDictionary(input) && MyString.subsetOf(input, hand)) {
 				score += wordScore(input);
+				System.out.println("'" + input + "' -> score: " + score);
 				hand = MyString.remove(hand, input);
-			}
+			} 
 		}
+		
 		if (hand.length() == 0) {
 	        System.out.println("Ran out of letters. Total score: " + score + " points");
 		} else {
